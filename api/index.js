@@ -8,11 +8,10 @@ import auth from './services/auth.js';
 const app = express();
 const port = 8080;
 
-app.use(cors);
+app.use(cors());
 app.use(express.json())
 
 app.get(`/`, (req, res) => {
-    console.log(`bateu aq`);
     return res.status(200).json(JSON.stringify({
         msg: "Bem-vindo"
     }))
@@ -37,5 +36,5 @@ app.delete(`/user`, async (req, res, next) => await auth.tokenVerify(req, res, n
 // FIM ROTAS USUARIO
 
 app.listen(port, () => {
-
+    console.log(`http://localhost:${port}`);
 })
